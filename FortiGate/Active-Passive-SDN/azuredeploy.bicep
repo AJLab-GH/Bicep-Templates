@@ -374,11 +374,6 @@ var zone2 = [
   '2'
 ]
 
-module fortiGateNamePrefix_fortinetdeployment_id './nested_fortiGateNamePrefix_fortinetdeployment_id.bicep' = {
-  name: '${fortiGateNamePrefix}-fortinetdeployment-${uniqueString(resourceGroup().id)}'
-  params: {}
-}
-
 resource serialConsoleStorageAccountName 'Microsoft.Storage/storageAccounts@2021-02-01' = if (serialConsole == 'yes') {
   name: serialConsoleStorageAccountName_var
   location: location
