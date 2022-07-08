@@ -51,7 +51,7 @@
             "value": "172.16.136.0/22"
         },
         "subnet1Name": {
-            "value": "ExternalSubnet"
+            "value": "ProviderSubnet"
         },
         "subnet1Prefix": {
             "value": "172.16.136.0/26"
@@ -60,7 +60,7 @@
             "value": "172.16.136.4"
         },
         "subnet2Name": {
-            "value": "InternalSubnet"
+            "value": "ManagementSubnet"
         },
         "subnet2Prefix": {
             "value": "172.16.136.64/26"
