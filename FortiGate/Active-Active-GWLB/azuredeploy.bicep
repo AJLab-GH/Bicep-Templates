@@ -105,11 +105,8 @@ param publicIP1NewOrExisting string = 'new'
 @description('Name of Public IP address for FortiGate-A, if no name is provided the default name will be the Resource Group Name as the Prefix and \'-FGT-A-PIP\' as the suffix')
 param publicIP1Name string = ''
 
-
 @description('Public IP Resource Group, this value is required if an existing Public IP is selected')
 param publicIP1ResourceGroup string = ''
-
-// 
 
 @description('Public IP for FortiGate-B for management purposes')
 @allowed([
@@ -788,6 +785,9 @@ output fortiGateAPublicIP string = ((publicIP1NewOrExisting == 'new') ? referenc
 output fortiGateBPublicIP string = ((publicIP2NewOrExisting == 'new') ? reference(publicIP2Id).ipAddress : '')
 output fortiGateAFQDN string = ((publicIP1NewOrExisting == 'new') ? reference(publicIP1Id).dnsSettings.fqdn : '')
 output fortiGateBFQDN string = ((publicIP1NewOrExisting == 'new') ? reference(publicIP2Id).dnsSettings.fqdn : '')
+output fortiGateNamePrefix string = fortiGateNamePrefix
+output SubscriptionID string = subscription().id
+output ResourceGroupName string = resourceGroup().name
 
 
 
