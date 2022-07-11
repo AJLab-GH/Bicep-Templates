@@ -141,7 +141,7 @@ param vnetResourceGroup string = ''
 param vnetAddressPrefix string = '172.16.136.0/22'
 
 @description('Subnet 1 Name')
-param subnet1Name string = 'Provider'
+param subnet1Name string = 'ProviderSubnet'
 
 @description('Subnet 1 Prefix')
 param subnet1Prefix string = '172.16.136.0/26'
@@ -537,6 +537,7 @@ resource fgaNic1Name 'Microsoft.Network/networkInterfaces@2020-04-01' = {
   }
   dependsOn: [
     vnetName_resource
+    GWLBName
   ]
 }
 
@@ -573,6 +574,7 @@ resource fgbNic1Name 'Microsoft.Network/networkInterfaces@2020-04-01' = {
   dependsOn: [
     fgaNic1Name
     vnetName_resource
+    GWLBName
   ]
 }
 
@@ -605,7 +607,6 @@ resource fgaNic2Name 'Microsoft.Network/networkInterfaces@2020-04-01' = {
     }
   }
   dependsOn: [
-    GWLBName
     vnetName_resource
   ]
 }
@@ -640,7 +641,6 @@ resource fgbNic2Name 'Microsoft.Network/networkInterfaces@2020-04-01' = {
     }
   }
   dependsOn: [
-    GWLBName
     vnetName_resource
     fgaNic2Name
   ]
