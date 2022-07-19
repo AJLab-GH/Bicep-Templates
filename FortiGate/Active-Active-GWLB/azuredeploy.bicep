@@ -346,7 +346,7 @@ resource vnetName_resource 'Microsoft.Network/virtualNetworks@2020-04-01' = if (
   }
 }
 
-resource GWLBName 'Microsoft.Network/loadBalancers@2020-08-01' = {
+resource GWLBName 'Microsoft.Network/loadBalancers@2021-08-01' = {
   name: GWLBName_var
   location: location
   tags: {
@@ -374,16 +374,16 @@ resource GWLBName 'Microsoft.Network/loadBalancers@2020-08-01' = {
         properties: {
           tunnelInterfaces: [
             {
-              port: '2000'
-              identifier: '800'
+              port: 2000
+              identifier: 800
               protocol: 'VxLan'
-              Type: 'Internal'
+              type: 'Internal'
             }
             {
-              port: '2001'
-              identifier: '801'
+              port: 2001
+              identifier: 801
               protocol: 'VxLan'
-              Type: 'External' 
+              type: 'External' 
             }
           ]
         }
@@ -788,6 +788,5 @@ output fortiGateBFQDN string = ((publicIP1NewOrExisting == 'new') ? reference(pu
 output fortiGateNamePrefix string = fortiGateNamePrefix
 output SubscriptionID string = subscription().id
 output ResourceGroupName string = resourceGroup().name
-
 
 
