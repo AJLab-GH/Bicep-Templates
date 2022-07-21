@@ -1,0 +1,60 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "deploymentPrefix": {
+            "value": ""
+        },
+        "osVersion": {
+            "value": "latest"
+        },
+        "instanceType": {
+            "value": "Standard_F8s"
+        },
+        "publicIPNewOrExisting": {
+            "value": "new"
+        },
+        "publicIPName": {
+            "value": ""
+        },
+        "publicIPResourceGroup": {
+            "value": ""
+        },
+        "adminUsername": {
+            "value": ""
+        },
+        "adminPassword": {
+            "value": null
+        },
+        "vnetNewOrExisting": {
+            "value": "new"
+        },
+        "vnetName": {
+            "value": ""
+        },
+        "vnetResourceGroup": {
+            "value": ""
+        },
+        "vnetAddressPrefix": {
+            "value": "172.16.136.0/21"
+        },
+        "mgmtSubnet": {
+            "value": "ManagementSubnet"
+        },
+        "mgmtSubnetPrefix": {
+            "value": "172.16.136.0/24"
+        },
+        "traffic1Subnet": {
+            "value": "Traffic-A-Subnet"
+        },
+        "traffic1SubnetPrefix": {
+            "value": "172.16.137.0/24"
+        },
+        "traffic2Subnet": {
+            "value": "Traffic-B-Subnet"
+        },
+        "traffic2SubnetPrefix": {
+            "value": "172.16.138.0/24"
+        }
+    }
+}
