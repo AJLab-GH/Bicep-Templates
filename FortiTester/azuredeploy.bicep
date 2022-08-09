@@ -190,6 +190,7 @@ resource trafficANic_resource 'Microsoft.Network/networkInterfaces@2021-03-01' =
       }
     ]
     enableAcceleratedNetworking: true
+    enableIPForwarding: true
     networkSecurityGroup: {
       id: nsgId
     }
@@ -215,6 +216,7 @@ resource trafficBNic_resource 'Microsoft.Network/networkInterfaces@2021-03-01' =
       }
     ]
     enableAcceleratedNetworking: true
+    enableIPForwarding: true
     networkSecurityGroup: {
       id: nsgId
     }
