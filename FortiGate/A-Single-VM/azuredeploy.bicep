@@ -11,7 +11,7 @@ param fortiGateNamePrefix string
 @description('Identifies whether to to use PAYG (on demand licensing) or BYOL license model (where license is purchased separately')
 @allowed([
   'fortinet_fg-vm'
-  'fortinet_fg-vm_payg_20190624'
+  'fortinet_fg-vm_payg_2022'
 ])
 param fortiGateImageSKU string = 'fortinet_fg-vm'
 
@@ -43,12 +43,10 @@ param fortiGateAdditionalCustomData string = ''
 
 @description('Virtual Machine size selection - must be F4 or other instance that supports 4 NICs')
 @allowed([
-  'Standard_F1s'
   'Standard_F2s'
   'Standard_F4s'
   'Standard_F8s'
   'Standard_F16s'
-  'Standard_F1'
   'Standard_F2'
   'Standard_F4'
   'Standard_F8'
@@ -68,8 +66,48 @@ param fortiGateAdditionalCustomData string = ''
   'Standard_D8s_v3'
   'Standard_D16s_v3'
   'Standard_D32s_v3'
+  'Standard_D2_v4'
+  'Standard_D4_v4'
+  'Standard_D8_v4'
+  'Standard_D16_v4'
+  'Standard_D32_v4'
+  'Standard_D2s_v4'
+  'Standard_D4s_v4'
+  'Standard_D8s_v4'
+  'Standard_D16s_v4'
+  'Standard_D32s_v4'
+  'Standard_D2a_v4'
+  'Standard_D4a_v4'
+  'Standard_D8a_v4'
+  'Standard_D16a_v4'
+  'Standard_D32a_v4'
+  'Standard_D2as_v4'
+  'Standard_D4as_v4'
+  'Standard_D8as_v4'
+  'Standard_D16as_v4'
+  'Standard_D32as_v4'
+  'Standard_D2_v5'
+  'Standard_D4_v5'
+  'Standard_D8_v5'
+  'Standard_D16_v5'
+  'Standard_D32_v5'
+  'Standard_D2s_v5'
+  'Standard_D4s_v5'
+  'Standard_D8s_v5'
+  'Standard_D16s_v5'
+  'Standard_D32s_v5'
+  'Standard_D2as_v5'
+  'Standard_D4as_v5'
+  'Standard_D8as_v5'
+  'Standard_D16as_v5'
+  'Standard_D32as_v5'
+  'Standard_D2ads_v5'
+  'Standard_D4ads_v5'
+  'Standard_D8ads_v5'
+  'Standard_D16ads_v5'
+  'Standard_D32ads_v5'
 ])
-param instanceType string = 'Standard_F2s'
+param instanceType string = 'Standard_D4as_v4'
 
 @description('Accelerated Networking enables direct connection between the VM and network card. Only available on 2 CPU F/Fs and 4 CPU D/Dsv2, D/Dsv3, E/Esv3, Fsv2, Lsv2, Ms/Mms and Ms/Mmsv2')
 @allowed([
@@ -168,6 +206,7 @@ param fortiManagerSerial string = ''
 
 @description('FortiGate BYOL license content')
 param fortiGateLicenseBYOL string = ''
+
 
 @description('FortiGate BYOL Flex-VM license token')
 param fortiGateLicenseFlexVM string = ''
@@ -495,6 +534,8 @@ resource fgtVmName 'Microsoft.Compute/virtualMachines@2021-07-01' = {
     }
   }
 }
+
+
 
 output fortiGatePublicIP string = (((publicIP1NewOrExisting == 'new') && (publicIP1AddressType == 'Standard')) ? reference(publicIP1Id).ipAddress : '')
 output fortiGateFQDN string = ((publicIP1NewOrExisting == 'new') ? reference(publicIP1Id).dnsSettings.fqdn : '')

@@ -13,24 +13,73 @@ param deploymentPrefix string
 ])
 param osVersion string = 'latest'
 
-@description('Virtual Machine size selection')
+@description('Virtual Machine size selection - must be F4 or other instance that supports 4 NICs')
 @allowed([
-  'Standard_F4'
-  'Standard_F8'
-  'Standard_F16'
+  'Standard_F2s'
   'Standard_F4s'
   'Standard_F8s'
   'Standard_F16s'
+  'Standard_F2'
+  'Standard_F4'
+  'Standard_F8'
+  'Standard_F16'
+  'Standard_F2s_v2'
+  'Standard_F4s_v2'
   'Standard_F8s_v2'
   'Standard_F16s_v2'
   'Standard_F32s_v2'
-  'Standard_D8_v3'
-  'Standard_D16_v3'
+  'Standard_DS1_v2'
+  'Standard_DS2_v2'
+  'Standard_DS3_v2'
+  'Standard_DS4_v2'
+  'Standard_DS5_v2'
+  'Standard_D2s_v3'
+  'Standard_D4s_v3'
   'Standard_D8s_v3'
   'Standard_D16s_v3'
   'Standard_D32s_v3'
+  'Standard_D2_v4'
+  'Standard_D4_v4'
+  'Standard_D8_v4'
+  'Standard_D16_v4'
+  'Standard_D32_v4'
+  'Standard_D2s_v4'
+  'Standard_D4s_v4'
+  'Standard_D8s_v4'
+  'Standard_D16s_v4'
+  'Standard_D32s_v4'
+  'Standard_D2a_v4'
+  'Standard_D4a_v4'
+  'Standard_D8a_v4'
+  'Standard_D16a_v4'
+  'Standard_D32a_v4'
+  'Standard_D2as_v4'
+  'Standard_D4as_v4'
+  'Standard_D8as_v4'
+  'Standard_D16as_v4'
+  'Standard_D32as_v4'
+  'Standard_D2_v5'
+  'Standard_D4_v5'
+  'Standard_D8_v5'
+  'Standard_D16_v5'
+  'Standard_D32_v5'
+  'Standard_D2s_v5'
+  'Standard_D4s_v5'
+  'Standard_D8s_v5'
+  'Standard_D16s_v5'
+  'Standard_D32s_v5'
+  'Standard_D2as_v5'
+  'Standard_D4as_v5'
+  'Standard_D8as_v5'
+  'Standard_D16as_v5'
+  'Standard_D32as_v5'
+  'Standard_D2ads_v5'
+  'Standard_D4ads_v5'
+  'Standard_D8ads_v5'
+  'Standard_D16ads_v5'
+  'Standard_D32ads_v5'
 ])
-param instanceType string = 'Standard_F8s'
+param instanceType string = 'Standard_D8as_v4'
 
 @description('Public IP for FortiTester for management purposes')
 @allowed([
@@ -49,6 +98,7 @@ param adminUsername string
 
 @secure()
 param adminPassword string
+
 @description('Identify whether to use a new or existing vnet')
 @allowed([
   'new'
@@ -190,6 +240,7 @@ resource trafficANic_resource 'Microsoft.Network/networkInterfaces@2021-03-01' =
       }
     ]
     enableAcceleratedNetworking: true
+    enableIPForwarding: true
     networkSecurityGroup: {
       id: nsgId
     }
@@ -215,6 +266,7 @@ resource trafficBNic_resource 'Microsoft.Network/networkInterfaces@2021-03-01' =
       }
     ]
     enableAcceleratedNetworking: true
+    enableIPForwarding: true
     networkSecurityGroup: {
       id: nsgId
     }

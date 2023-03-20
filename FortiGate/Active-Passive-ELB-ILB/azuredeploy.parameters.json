@@ -4,7 +4,7 @@
   "parameters": {
 
     "fortiGateImageSKU": {
-      "value": "fortinet_fg-vm_payg_20190624"
+      "value": "fortinet_fg-vm"
     },
     "fortiGateImageVersion": {
       "value": "latest"
@@ -13,13 +13,13 @@
       "value": ""
     },
     "instanceType": {
-      "value": "Standard_F4s"
+      "value": "Standard_D8as_v4"
     },
     "availabilityOptions": {
-      "value": "Availability Zones"
+      "value": "Availability Set"
     },
     "acceleratedNetworking": {
-      "value": true
+      "value": false
     },
     "publicIP1NewOrExisting": {
       "value": "new"

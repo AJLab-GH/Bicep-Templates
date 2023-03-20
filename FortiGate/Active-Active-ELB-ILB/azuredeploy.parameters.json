@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "fortiGateImageSKU": {
-            "value": "fortinet_fg-vm_payg_20190624"
+            "value": "fortinet_fg-vm"
         },
         "fortiGateImageVersion": {
             "value": "7.0.5"
@@ -12,7 +12,7 @@
             "value": ""
         },
         "instanceType": {
-            "value": "Standard_F2s"
+            "value": "Standard_D4as_v4"
         },
         "availabilityOptions": {
             "value": "Availability Zones"

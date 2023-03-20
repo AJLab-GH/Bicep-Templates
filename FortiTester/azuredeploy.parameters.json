@@ -2,14 +2,11 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "deploymentPrefix": {
-            "value": ""
-        },
         "osVersion": {
             "value": "latest"
         },
         "instanceType": {
-            "value": "Standard_F8s"
+            "value": "Standard_D8as_v4"
         },
         "publicIPNewOrExisting": {
             "value": "new"
@@ -19,12 +16,6 @@
         },
         "publicIPResourceGroup": {
             "value": ""
-        },
-        "adminUsername": {
-            "value": ""
-        },
-        "adminPassword": {
-            "value": null
         },
         "vnetNewOrExisting": {
             "value": "new"
