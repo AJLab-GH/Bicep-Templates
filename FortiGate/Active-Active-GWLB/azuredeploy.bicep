@@ -238,7 +238,7 @@ var fgbVmName_var = '${fortiGateNamePrefix}-FGT-B'
 var fmgCustomData = ((fortiManager == 'yes') ? '\nconfig system central-management\nset type fortimanager\n set fmg ${fortiManagerIP}\nset serial-number ${fortiManagerSerial}\nend\n config system interface\n edit port1\n append allowaccess fgfm\n end\n config system interface\n edit port2\n append allowaccess fgfm\n end\n' : '')
 var fgaCustomDataFlexVM = ((fortiGateLicenseFlexVMA == '') ? '' : 'exec vm-license ${fortiGateLicenseFlexVMA}\n')
 var fgbCustomDataFlexVM = ((fortiGateLicenseFlexVMB == '') ? '' : 'exec vm-license ${fortiGateLicenseFlexVMB}\n')
-var customDataHeader = 'Content-Type: multipart/mixed; boundary="12345"\nMIME-Version: 1.0\n--12345\nContent-Type: text/plain; charset="us-ascii"\nMIME-Version: 1.0\nContent-Transfer-Encoding: 7bit\nContent-Disposition: attachment; filename="config"\n\n'
+var customDataHeader = 'Content-Type: multipart/mixed; boundary="12345"\nMIME-Version: 1.0\n\n--12345\nContent-Type: text/plain; charset="us-ascii"\nMIME-Version: 1.0\nContent-Transfer-Encoding: 7bit\nContent-Disposition: attachment; filename="config"\n\n'
 var fgaCustomDataGWLB = '${customDatafgaFabricSDN}${customDatafgaHostname}${customDatafgaProbeResponse}${customDatafgaAddresses}${customDatafgaInterfaces}${customDatafgaRouter}${customDatafgaVXLan}${customDatafgaVirtualWirePair}${customDatafgaFWPolicy}${customDataFMGandFlexVMA}'
 var fgbCustomDataGWLB = '${customDatafgbFabricSDN}${customDatafgbHostname}${customDatafgbProbeResponse}${customDatafgbAddresses}${customDatafgbInterfaces}${customDatafgbRouter}${customDatafgbVXLan}${customDatafgbVirtualWirePair}${customDatafgbFWPolicy}${customDataFMGandFlexVMB}'
 var customDatafgaFabricSDN = 'config system sdn-connector\nedit AzureSDN\nset type azure\nnext\nend\n'
@@ -262,7 +262,7 @@ var customDatafgbVirtualWirePair = 'config system virtual-wire-pair \n edit vxla
 var customDatafgbFWPolicy = 'config firewall policy \n edit 1\n set name int-ext_vxlan \n set srcintf extvxlan intvxlan\n set dstintf extvxlan intvxlan \n set srcaddr all\n set dstaddr all \n set action accept\n set schedule always\n set service ALL\n set logtraffic all\n set utm-status enable\n set ssl-ssh-profile certificate-inspection \n set ips-sensor default \n next\n end\n'
 var customDataFMGandFlexVMB = '${fmgCustomData}${fortiGateAdditionalCustomData}\n${fgbCustomDataFlexVM}\n'
 var customDataLicenseHeader = '--12345\nContent-Type: text/plain; charset="us-ascii"\nMIME-Version: 1.0\nContent-Transfer-Encoding: 7bit\nContent-Disposition: attachment; filename="fgtlicense"\n\n'
-var customDataFooter = '--12345--\n'
+var customDataFooter = '\n--12345--\n'
 var fgaCustomDataCombined = '${customDataHeader}${fgaCustomDataGWLB}${customDataLicenseHeader}${fortiGateLicenseBYOLA}${customDataFooter}'
 var fgbCustomDataCombined = '${customDataHeader}${fgbCustomDataGWLB}${customDataLicenseHeader}${fortiGateLicenseBYOLB}${customDataFooter}'
 var fgaCustomData = base64(((fortiGateLicenseBYOLA == '') ? fgaCustomDataGWLB : fgaCustomDataCombined))

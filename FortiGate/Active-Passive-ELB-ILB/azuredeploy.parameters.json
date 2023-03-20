@@ -16,10 +16,10 @@
       "value": "Standard_D8as_v4"
     },
     "availabilityOptions": {
-      "value": "Availability Zones"
+      "value": "Availability Set"
     },
     "acceleratedNetworking": {
-      "value": true
+      "value": false
     },
     "publicIP1NewOrExisting": {
       "value": "new"
