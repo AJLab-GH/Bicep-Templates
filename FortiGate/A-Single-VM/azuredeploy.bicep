@@ -537,16 +537,5 @@ resource fgtVmName 'Microsoft.Compute/virtualMachines@2021-07-01' = {
 
 
 
-output o_fortiGateLicenseBYOL string = replace(fortiGateLicenseBYOL,'\n', '\\n')
-
-output o_customDataHeader string = replace(customDataHeader,'\n', '\\n')
-
-output o_fgaCustomDataBody string = replace(customDataBody,'\n', '\\n')
-
-output o_customDataLicenseHeader string = replace(customDataLicenseHeader,'\n', '\\n')
-
-output o_fgaCustomDataCombined string = replace(customDataCombined,'\n', '\\n')
-
-output o_fgaCustomData string = replace(fgtCustomData,'\n', '\\n')
-
-
+output fortiGatePublicIP string = (((publicIP1NewOrExisting == 'new') && (publicIP1AddressType == 'Standard')) ? reference(publicIP1Id).ipAddress : '')
+output fortiGateFQDN string = ((publicIP1NewOrExisting == 'new') ? reference(publicIP1Id).dnsSettings.fqdn : '')
